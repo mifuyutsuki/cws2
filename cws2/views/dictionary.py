@@ -149,7 +149,9 @@ class NewWordView(LoginRequiredMixin, OwnableResourceMixin, FormView):
             )
             definition.classes.set(form.cleaned_data.get("classes"))
         messages.success(self.request, _("Word created successfully!"))
-        return redirect(form.instance.get_absolute_url())
+        if "submit_goto" in self.request.POST:
+            return redirect(form.instance.get_absolute_url())
+        return redirect(self.request.path_info)
 
     def get_form(self, form_class=None):
         if not form_class:
