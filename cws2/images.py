@@ -14,7 +14,7 @@ def _convert_image_to_webp(image_file, thumbnail_size=(486, 486)):
     image.thumbnail(thumbnail_size)
     thumb_io = BytesIO()
     image.save(thumb_io, "WEBP")
-    return File(thumb_io, name=image_file.name)
+    return File(thumb_io, name=image.filename)
 
 
 def process_avatar_image(image_file):
