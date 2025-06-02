@@ -1,5 +1,5 @@
 {# Regular (link) button. By default, the accent color is used. #}
-{% macro button(link, label, icon=none, color="accent") %}
+{% macro button(label, link, icon=none, color="accent") %}
     <a href="{{ link }}" class="button button--{{ color }}">
         {% if icon %}<i class="bx {{ icon }}"></i>{% endif %}
         {% trans %}{{ label }}{% endtrans %}
