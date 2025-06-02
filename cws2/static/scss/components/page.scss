@@ -17,26 +17,30 @@ body > .page {
     }
 
     .page__breadcrumb {
-      grid-column: 2 / span 2;
+      grid-column: 1 / span 3;
       font-size: $font-small;
       padding-inline-start: .4rem;
 
       .page__breadcrumb-list {
-        display: flex;
-        align-items: center;
+        display: block;
 
         .page__breadcrumb-item {
           color: var(--body-text-lighter);
+          float: left;
 
           .page__breadcrumb-link {
             color: var(--body-text-lightest);
             display: inline-block;
           }
 
-          &:not(:last-child)::after {
+          &:not(:last-child) {
+            margin-inline-end: .8rem;
+          }
+
+          &:not(:first-child)::before {
             content: "›";
             display: inline-block;
-            margin-inline: .8rem;
+            margin-inline-end: .8rem;
           }
         }
       }
@@ -59,11 +63,9 @@ body > .page {
     }
 
     .page__header-actions {
-      display: flex;
-      align-items: center;
-      column-gap: .8rem;
+      display: block;
       grid-row: 3;
-      grid-column: 2 / span 2;
+      grid-column: 1 / span 2;
 
       @include desktop {
         grid-column: unset;
@@ -71,7 +73,7 @@ body > .page {
       }
 
       > button, > a {
-        margin-block-start: 1.2rem;
+        margin-block-start: 10px;
 
         @include desktop {
           margin-block-start: 0;

@@ -5,9 +5,8 @@
   --button-secondary: var(--neutral-bold);
   --button-text: var(--neutral-contrast);
 
-  display: flex;
-  align-items: center;
-  column-gap: .6rem;
+  display: block;
+  float: left;
   padding: .4rem 1.2rem;
   background: var(--button-primary);
   border: none;
@@ -19,6 +18,10 @@
   font-family: $font-stack;
   line-height: $line-height;
   cursor: pointer;
+
+  &:not(:last-child) {
+    margin-right: 8px;
+  }
 
   &.button--accent {
     --button-primary: var(--accent);
