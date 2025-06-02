@@ -1,4 +1,5 @@
 {% extends "cws2/base.jinja" %}
+{% from "cws2/macros/button.jinja" import button %}
 
 {% block breadcrumb_nav %}
     <div class="page__breadcrumb">
@@ -45,15 +46,11 @@
 {% endblock breadcrumb_nav %}
 
 {% block page_actions %}
-    <a href="{{ url('word.index', user=word.language.created_by.username, language=word.language.slug) }}" class="button button--accent">
-        <i class="bx bx-left-arrow-alt"></i>
-        {% trans %}Dictionary{% endtrans %}
-    </a>
+    {{ button("Dictionary", url('word.index', user=word.language.created_by.username, language=word.language.slug), icon="bx-left-arrow-alt") }}
     {% if editable %}
-        <a href="{{ word.get_edit_url() }}" class="button button--accent">
-            <i class="bx bx-edit-alt"></i>
-            {% trans %}Edit word{% endtrans %}
-        </a>
+        {{ button("Edit", word.get_edit_url(), icon="bx-edit-alt") }}
+        {# {{ button("Add definition", url('word.new', user=word.language.created_by.username, language=word.language.slug), icon="bx-message-alt-add") }} #}
+        {# {{ button("Add another word", url('word.new', user=word.language.created_by.username, language=word.language.slug), icon="bx-message-alt-add") }} #}
     {% endif %}
 {% endblock page_actions %}
 

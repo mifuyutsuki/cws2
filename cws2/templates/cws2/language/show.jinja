@@ -1,4 +1,5 @@
 {% extends "cws2/base.jinja" %}
+{% from "cws2/macros/button.jinja" import button %}
 
 {% block page_icon %}{% if language.language_flag %}<img src="{{ language.language_flag.url }}" class="flag">{% else %}<i class="bx bx-book"></i>{% endif %}{% endblock page_icon %}
 
@@ -7,15 +8,9 @@
 {% endblock page_title %}
 
 {% block page_actions %}
-<a href="{{ url('word.index', user=language.created_by.username, language=language.slug) }}" class="button button--accent">
-    <i class="bx bx-text"></i>
-    {% trans %}Dictionary{% endtrans %}
-</a>
+{{ button("Dictionary", url('word.index', user=language.created_by.username, language=language.slug), icon="bx-text") }}
 {% if request.user.is_authenticated and language.check_user_permission(request.user, "write") %}
-<a href="{{ url('language.edit', user=language.created_by.username, language=language.slug) }}" class="button button--accent">
-    <i class="bx bx-edit-alt"></i>
-    Edit language
-</a>
+    {{ button("Edit language", url('language.edit', user=language.created_by.username, language=language.slug), icon="bx-edit-alt") }}
 {% endif %}
 {% endblock page_actions %}
 

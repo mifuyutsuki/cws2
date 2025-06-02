@@ -1,7 +1,8 @@
 {% extends "cws2/base.jinja" %}
+{% from "cws2/macros/button.jinja" import button %}
 
 {% block page_actions %}
-    <a href="{{ url('group.new') }}" class="button button--accent"><i class="bx bx-user-plus"></i>New group</a>
+    {{ button("New group", url('group.new'), icon="bx-user-plus") }}
 {% endblock page_actions %}
 
 {% block page_content %}

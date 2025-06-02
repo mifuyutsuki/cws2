@@ -1,11 +1,9 @@
 {% extends "cws2/base.jinja" %}
+{% from "cws2/macros/button.jinja" import button %}
 
 {% block page_actions %}
     {% if request.user == profile %}
-        <a href="{{ url('user.edit') }}" class="button button--accent">
-            <i class="bx bx-edit-alt"></i>
-            Edit profile
-        </a>
+        {{ button("Edit profile", url('user.edit'), icon="bx-edit-alt") }}
     {% endif %}
 {% endblock page_actions %}
 
