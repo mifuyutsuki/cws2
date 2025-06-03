@@ -32,7 +32,7 @@ poetry install --with dev,test
 ### Configuring
 Now you're all installed, there's a few things you'll want to do before your first run.
 ```bash
-make env
+make env            # cp .env.example .env
 ```
 This will set you up a `.env` file, which you should edit to update your configuration.
 
@@ -40,13 +40,16 @@ Make sure you fill in `DATABASE_URL` as it's used to connect to your database. T
 
 Once you've finished configuring your environment, you can migrate the database using:
 ```bash
-make migrate
+make migrate        # python3 manage.py migrate
 ```
 
 ### Run the server
 Finally you should be able to run the server. Woohoo! 🎉
 ```bash
-make serve
+# runserver is not suitable for production!
+make serve          # python3 manage.py runserver
+# or to make it LAN accessible
+make servelan       # python3 manage.py runserver 0.0.0.0:8000
 ```
 
 If you'd like to access the development site on other devices on your local network, you should launch with the command `make servelan` instead. Just make sure you add the server device's local IP to the `ALLOWED_HOSTS` environment setting when configuring otherwise local network devices won't be allowed to connect.
@@ -69,25 +72,25 @@ When running the production server, you will have to serve static assets yoursel
 In development, the Django server automatically fetches the static files of any dependencies but the production server won't know where these are so you'll need to manually collect up all the static files of any dependencies into your project environment. Luckily there's a management command for this.
 
 ```bash
-make static
+make static         # python3 manage.py collectstatic
 ```
 
 ## 🤖 Development
 ### 🎨 Compiling Assets
 Style assets are written in SASS and compiled on the server, so when developing locally you need to make sure you compile these assets before you see any change on your development copy. You can do that with:
 ```bash
-make sass
+make sass           # python3 manage.py sass cws2/static/scss/base.scss cws2/static/css/base.css -g -t compressed
 ```
 
 Alternatively, to compile assets and keep watching for new changes, you can run:
 ```bash
-make watch
+make watch          # python3 manage.py sass cws2/static/scss/base.scss cws2/static/css/base.css -g -t compressed --watch
 ```
 
 ### 🧪 Testing
 We use [pytest](https://docs.pytest.org/en/7.2.x/) for testing. You can run tests with the following command:
 ```bash
-make test
+make test           # pytest
 ```
 
 ### 🧩 Migrations
@@ -98,7 +101,7 @@ Migrations are written as regular Python scripts in the `cws2/migrations` direct
 
 There's a script for auto-generating migrations based on changes you make to models which you can run using the command below:
 ```bash
-make migrations
+make migrations     # python3 manage.py makemigrations
 ```
 
 Note that for more complex changes such as modifying data in the database, you'll have to write the migration yourself. You can generate a blank migration file using the following command.
@@ -112,13 +115,13 @@ We care about code style, so all code should be compliant with [ruff](https://do
 
 You can check whether your code is compliant with the above using the following command.
 ```bash
-make lint
+make lint           # ruff check .; ruff format --check .
 ```
 
 You can also automatically format your code with the following command.
 
 ```bash
-make format
+make format         # ruff format .
 ```
 
 Code editors often have tools to automate this, such as in [VS Code](https://dev.to/adamlombard/how-to-use-the-black-python-code-formatter-in-vscode-3lo0).
