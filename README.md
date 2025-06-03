@@ -173,7 +173,7 @@ make migrations                         # python3 manage.py makemigrations
 Note that for more complex changes such as modifying data in the database, you'll have to write the migration yourself. You can generate a blank migration file using the following command.
 
 ```bash
-python manage.py makemigrations cws2 --empty -n my_migration
+python3 manage.py makemigrations cws2 --empty -n my_migration
 ```
 
 ### 🍓 Code Style
