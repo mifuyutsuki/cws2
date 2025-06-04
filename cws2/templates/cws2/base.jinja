@@ -40,7 +40,7 @@
                                 <li class="header__nav-item header__nav-item--has-dropdown header__nav-item--purple" data-toggles="DropdownAdmin">
                                     <a class="header__nav-link" href="#">
                                         <i class="bx bx-hard-hat"></i>
-                                        <span class="header__nav-link-text">Admin</span>
+                                        <span class="header__nav-link-text-hide-1">Admin</span>
                                     </a>
                                 </li>
                             {% endif %}
@@ -50,7 +50,7 @@
                             <li class="header__nav-item header__nav-item--has-dropdown header__nav-item--orange" data-toggles="DropdownAccount">
                                 <a class="header__nav-link" href="#">
                                     <i class="bx bx-user"></i>
-                                    <span class="header__nav-link-text">{{ request.user.username }}</span>
+                                    <span class="header__nav-link-text-hide-2">{{ request.user.username }}</span>
                                 </a>
                             </li>
                         {% else %}

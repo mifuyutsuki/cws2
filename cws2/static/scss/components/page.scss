@@ -3,8 +3,14 @@
 body > .page {
   max-width: $max-width;
   margin-inline: auto;
-  padding-block: 2.4rem;
+  padding: 2.4rem;
   width: 100%;
+  align-self: center;
+
+  @include mobile {
+    padding: unset;
+    padding-block: 2rem;
+  }
 
   .page__header {
     display: grid;
