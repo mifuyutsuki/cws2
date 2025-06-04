@@ -1,6 +1,10 @@
 {# Regular (link) button. By default, the accent color is used. #}
-{% macro button(label, link, icon=none, color="accent") %}
+{% macro button(label, link, icon=none, color="accent", disabled=false) %}
+{% if disabled %} {# TODO: disabled button styles #}
+    <a class="button button--{{ color }}">
+{% else %}
     <a href="{{ link }}" class="button button--{{ color }}">
+{% endif %}
         {% if icon %}<i class="bx {{ icon }}"></i>{% endif %}
         {% trans %}{{ label }}{% endtrans %}
     </a>
