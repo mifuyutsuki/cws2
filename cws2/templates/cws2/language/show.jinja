@@ -8,10 +8,15 @@
 {% endblock page_title %}
 
 {% block page_actions %}
-{{ button("Dictionary", url('word.index', user=language.created_by.username, language=language.slug), icon="bx-text") }}
-{% if request.user.is_authenticated and language.check_user_permission(request.user, "write") %}
-    {{ button("Edit language", url('language.edit', user=language.created_by.username, language=language.slug), icon="bx-edit-alt") }}
+{% if language.check_user_permission(request.user, "write") %}
+    {{ button("My languages", url('language.index'), icon="bx-left-arrow-alt") }}
+{% else %}
+    {{ button("User profile", language.owned_by.get_absolute_url(), icon="bx-user", color="orange") }}
 {% endif %}
+{% if request.user.is_authenticated and language.check_user_permission(request.user, "write") %}
+    {{ button("Edit", url('language.edit', user=language.created_by.username, language=language.slug), icon="bx-edit-alt") }}
+{% endif %}
+{{ button("Dictionary", url('word.index', user=language.created_by.username, language=language.slug), icon="bx-text") }}
 {% endblock page_actions %}
 
 {% block page_content %}

@@ -2,6 +2,7 @@
 {% from "cws2/macros/button.jinja" import button %}
 
 {% block page_actions %}
+{{ button("View language", language.get_absolute_url(), icon="bx-left-arrow-alt") }}
 {% if request.user.is_authenticated and language.check_user_permission(request.user, "write") %}
     {{ button("Add word", url('word.new', user=language.created_by.username, language=language.slug), icon="bx-message-alt-add") }}
 {% endif %}

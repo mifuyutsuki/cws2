@@ -1,4 +1,10 @@
 {% extends "cws2/base.jinja" %}
+{% from "cws2/macros/button.jinja" import button %}
+
+{% block page_actions %}
+{{ button("Translations", url('translation.index'), icon="bx-left-arrow-alt") }}
+{{ button("Translate", '#', icon="bx-list-plus", disabled=true) }}
+{% endblock page_actions %}
 
 {% block page_content %}
     <ul class="flex-list">
