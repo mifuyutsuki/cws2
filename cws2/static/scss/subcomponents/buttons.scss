@@ -29,8 +29,8 @@
   }
 
   &:active {
-    border-bottom: 1px solid var(--button-primary);
-    border-top: 4px solid var(--button-secondary);
+    border-bottom: 2px solid var(--button-primary);
+    border-top: 3px solid var(--button-secondary);
   }
 
   &::selection {
