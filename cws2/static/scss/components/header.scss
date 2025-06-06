@@ -200,7 +200,7 @@ body > .header {
     padding-block: 2rem;
     border-top: 1px solid var(--page-border);
     padding-inline: $gutter;
-    overflow: scroll;
+    overflow-x: auto;
 
     position: absolute;
     width: 100%;
