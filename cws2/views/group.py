@@ -34,8 +34,12 @@ class EditGroupView(GroupMixin, FormView):
         ]
 
     @property
-    def verb(self):
+    def page_title(self):
         return _("Edit %(group)s" % {"group": self.ownable_resource.name})
+
+    @property
+    def verb(self):
+        return self.page_title
 
     def form_valid(self, form):
         if (
@@ -80,6 +84,7 @@ class NewGroupView(FormView):
 
     breadcrumb = [[reverse_lazy("group.index"), _("Groups")]]
     verb = _("New group")
+    page_title = _("New group")
     page_icon = "bx-user-plus"
 
     field_prefixes = {"slug": "conworkshop.com/groups/"}
