@@ -35,6 +35,8 @@ class DropdownMenu {
         this.element = element;
         this.dropdown = document.querySelector("#" + this.element.dataset.toggles);
         this.element.addEventListener("click", this.click.bind(this));
+        this.underlay = document.querySelector(".dropdown-dismiss");
+        this.underlay.addEventListener("click", this.dismiss.bind(this));
     }
 
     close() {
@@ -49,13 +51,30 @@ class DropdownMenu {
 
     click(event) {
         event.preventDefault();
+
         let open = this.element.classList.contains("header__nav-item--dropdown-open");
         window.dropdowns.forEach(function(dropdown) {
             dropdown.close();
         });
+
         if (!open) {
             this.open();
+            if (!this.underlay.classList.contains("dropdown-dismiss-open")) {
+                this.underlay.classList.add("dropdown-dismiss-open");
+            }
+        } else {
+            this.underlay.classList.remove("dropdown-dismiss-open");
         }
+
+        return false;
+    }
+
+    dismiss(event) {
+        event.preventDefault();
+        window.dropdowns.forEach(function(dropdown) {
+            dropdown.close();
+        });
+        this.underlay.classList.remove("dropdown-dismiss-open");
         return false;
     }
 }

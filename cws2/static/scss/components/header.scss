@@ -8,6 +8,7 @@ body > .header {
   border-bottom: 1px solid var(--page-border);
   background: var(--page-background);
   padding-block-start: 1.2rem;
+  z-index: 11;
 
   @include desktop {
     height: $header-height;
