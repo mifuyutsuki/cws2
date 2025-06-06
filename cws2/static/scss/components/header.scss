@@ -1,6 +1,7 @@
 @import "../globals";
 
 $header-height: 74px;
+$header-height-mobile: 89px;
 
 body > .header {
   position: sticky;
@@ -78,6 +79,7 @@ body > .header {
             background: var(--nav-item-colour, var(--green));
             padding: 1rem;
             position: relative;
+            z-index: 11;
 
             @include desktop {
               background: none;
@@ -200,16 +202,19 @@ body > .header {
     padding-inline: $gutter;
     overflow: scroll;
 
+    position: absolute;
+    width: 100%;
+    top: 0;
+    left: 0;
+    margin-top: $header-height-mobile;
+    z-index: 10;
+    box-shadow: 0 2px 6px rgba(0, 0, 0, 0.05);
+    border-bottom: 1px solid var(--page-border);
+    border-top: none;
+
     @include desktop {
-      position: absolute;
-      padding-inline: 0;
-      width: 100%;
-      top: 0;
-      left: 0;
       margin-top: $header-height;
-      box-shadow: 0 2px 6px rgba(0, 0, 0, 0.05);
-      border-bottom: 1px solid var(--page-border);
-      border-top: none;
+      padding-inline: 0;
     }
 
     &.header__dropdown--open {
