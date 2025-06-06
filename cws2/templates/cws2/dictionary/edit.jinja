@@ -1,5 +1,10 @@
 {% extends "cws2/form.jinja" %}
 {% from "cws2/macros/field.jinja" import form_field %}
+{% from "cws2/macros/button.jinja" import button %}
+
+{% block page_actions %}
+{{ button("Word", word.get_absolute_url(), icon="bx-left-arrow-alt") }}
+{% endblock page_actions %}
 
 {% block form_content %}
     <div class="form__section">

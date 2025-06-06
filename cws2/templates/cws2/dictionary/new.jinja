@@ -1,6 +1,10 @@
 {% extends "cws2/form.jinja" %}
 {% from "cws2/macros/field.jinja" import form_field %}
-{% from "cws2/macros/button.jinja" import submit_button %}
+{% from "cws2/macros/button.jinja" import button, submit_button %}
+
+{% block page_actions %}
+{{ button("Dictionary", url('word.index', user=language.created_by.username, language=language.slug), icon="bx-left-arrow-alt") }}
+{% endblock page_actions %}
 
 {% block form_content %}
     <div class="form__section">

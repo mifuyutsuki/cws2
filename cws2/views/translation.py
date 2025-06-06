@@ -28,6 +28,7 @@ class IndexTranslationTemplateView(LoginRequiredMixin, View):
 
 class NewTranslationTemplateView(LoginRequiredMixin, FormView):
     form_class = TranslationTemplateForm
+    template_name = "cws2/translation/create.jinja"
 
     page_title = _("New translation")
     page_icon = "bx-plus"
@@ -46,6 +47,22 @@ class NewTranslationTemplateView(LoginRequiredMixin, FormView):
 
 class NewTranslationView(LoginRequiredMixin, FormView):
     form_class = TranslationForm
+    template_name = "cws2/translation/add.jinja"
+
+    # TODO: Implement this
+
+    @cached_property
+    def translation_template(self):
+        return get_object_or_404(
+            TranslationTemplate.objects.prefetch_related("translations"),
+            uuid=self.kwargs.get("translation"),
+        )
+
+    def get_context_data(self, **kwargs):
+        return {
+            **super().get_context_data(**kwargs),
+            "translation_template": self.translation_template,
+        }
 
 
 class ShowTranslationTemplateView(LoginRequiredMixin, View):

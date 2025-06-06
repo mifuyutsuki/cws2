@@ -1,15 +1,11 @@
 {% extends "cws2/base.jinja" %}
+{% from "cws2/macros/button.jinja" import button %}
 
 {% block page_actions %}
+    {{ button("Groups", url('group.index'), icon="bx-left-arrow-alt") }}
     {% if request.user.is_authenticated and group.check_user_permission(request.user, "write") %}
-        <a href="{{ url('group.edit', group=group.slug) }}" class="button button--accent">
-            <i class="bx bx-edit-alt"></i>
-            {% trans %}Edit group{% endtrans %}
-        </a>
-        <a href="{{ url('board.new', group=group.slug) }}" class="button button--accent">
-            <i class="bx bx-message-alt-add"></i>
-            {% trans %}New board{% endtrans %}
-        </a>
+        {{ button("Edit", url('group.edit', group=group.slug), icon="bx-edit-alt") }}
+        {{ button("New board", url('board.new', group=group.slug), icon="bx-message-alt-add") }}
     {% endif %}
 {% endblock page_actions %}
 

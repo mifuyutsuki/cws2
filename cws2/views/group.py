@@ -19,6 +19,7 @@ class GroupMixin(OwnableResourceMixin):
 
 class EditGroupView(GroupMixin, FormView):
     form_class = GroupForm
+    template_name = "cws2/group/edit.jinja"
     body_colour = "blue"
 
     ownable_permission_required = "write"
@@ -63,6 +64,9 @@ class EditGroupView(GroupMixin, FormView):
     def get_form_kwargs(self):
         return {**super().get_form_kwargs(), "instance": self.ownable_resource}
 
+    def get_context_data(self, **kwargs):
+        return {**super().get_context_data(**kwargs), "group": self.ownable_resource}
+
 
 class IndexGroupView(View):
     body_colour = "blue"
@@ -80,6 +84,7 @@ class IndexGroupView(View):
 
 class NewGroupView(FormView):
     form_class = GroupForm
+    template_name = "cws2/group/new.jinja"
     body_colour = "blue"
 
     breadcrumb = [[reverse_lazy("group.index"), _("Groups")]]

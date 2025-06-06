@@ -1,0 +1,6 @@
+{% extends "cws2/form.jinja" %}
+{% from "cws2/macros/button.jinja" import button %}
+
+{% block page_actions %}
+{{ button("Group", group.get_absolute_url(), icon="bx-left-arrow-alt") }}
+{% endblock page_actions %}

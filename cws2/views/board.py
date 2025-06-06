@@ -41,6 +41,7 @@ class IndexBoardView(View):
 
 class NewBoardView(OwnableResourceMixin, FormView):
     form_class = BoardForm
+    template_name = "cws2/board/new.jinja"
 
     page_title = _("New Board")
     page_icon = "bx-message-alt-add"
@@ -71,6 +72,9 @@ class NewBoardView(OwnableResourceMixin, FormView):
             return self.form_invalid(form)
         messages.success(self.request, _("Board created successfully!"))
         return HttpResponseRedirect(self.ownable_resource.get_absolute_url())
+
+    def get_context_data(self, **kwargs):
+        return {**super().get_context_data(**kwargs), "group": self.ownable_resource}
 
 
 class ShowBoardView(View):

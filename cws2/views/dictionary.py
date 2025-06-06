@@ -69,6 +69,13 @@ class EditWordView(LoginRequiredMixin, OwnableResourceMixin, FormView):
             created_by__username=self.kwargs.get("user"),
         )
 
+    def get_context_data(self, **kwargs):
+        return {
+            **super().get_context_data(**kwargs),
+            "language": self.ownable_resource,
+            "word": self.word,
+        }
+
 
 class IndexWordView(OwnableResourceMixin, View):
     template_name = "cws2/dictionary/index.jinja"
@@ -167,6 +174,9 @@ class NewWordView(LoginRequiredMixin, OwnableResourceMixin, FormView):
             slug=self.kwargs.get("language"),
             created_by__username=self.kwargs.get("user"),
         )
+
+    def get_context_data(self, **kwargs):
+        return {**super().get_context_data(**kwargs), "language": self.ownable_resource}
 
 
 class ShowWordView(View):

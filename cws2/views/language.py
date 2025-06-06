@@ -23,6 +23,7 @@ class LanguageMixin(OwnableResourceMixin):
 
 class EditLanguageView(LanguageMixin, FormView):
     form_class = LanguageForm
+    template_name = "cws2/language/edit.jinja"
 
     ownable_permission_required = "write"
 
@@ -62,6 +63,9 @@ class EditLanguageView(LanguageMixin, FormView):
     def get_form(self):
         return self.form_class(instance=self.ownable_resource, **self.get_form_kwargs())
 
+    def get_context_data(self, **kwargs):
+        return {**super().get_context_data(**kwargs), "language": self.ownable_resource}
+
 
 class IndexLanguageView(LoginRequiredMixin, View):
     template_name = "cws2/language/index.jinja"
@@ -80,6 +84,7 @@ class IndexLanguageView(LoginRequiredMixin, View):
 
 class NewLanguageView(LoginRequiredMixin, FormView):
     form_class = LanguageForm
+    template_name = "cws2/language/new.jinja"
 
     page_title = _("New language")
     page_icon = "bx-book-add"
