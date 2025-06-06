@@ -7,6 +7,7 @@
 
   display: block;
   float: left;
+  transition: unset;
   padding: .4rem 1.2rem;
   background: var(--button-primary);
   border: none;
@@ -21,6 +22,19 @@
 
   &:not(:last-child) {
     margin-right: 8px;
+  }
+
+  &:focus {
+    outline: $outline-width solid var(--button-secondary);
+  }
+
+  &:active {
+    border-bottom: 1px solid var(--button-primary);
+    border-top: 4px solid var(--button-secondary);
+  }
+
+  &::selection {
+    background: var(--button-secondary);
   }
 
   &.button--accent {
@@ -63,11 +77,6 @@
     --button-primary: var(--red);
     --button-secondary: var(--red-bold);
     --button-text: var(--red-contrast);
-  }
-
-  &:active {
-    border-bottom: 3px solid var(--accent-bold);
-    border-top: 2px solid var(--accent);
   }
 
   &.button--small {
