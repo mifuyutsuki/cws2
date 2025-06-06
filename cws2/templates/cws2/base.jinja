@@ -13,6 +13,9 @@
             <div class="header__wrapper">
                 <div class="header__brand">
                     <a class="header__brand-link" href="/">conworkshop</a>
+                    <div class="header__theme-switcher header__theme-switcher-mobile">
+                        {% include "cws2/components/theme_switcher.jinja" %}
+                    </div>
                     <a class="header__hamburger" href="#" aria-label="Toggle navigation menu"><i class="bx bx-menu"></i></a>
                 </div>
                 <nav class="header__nav">
@@ -44,7 +47,7 @@
                                     </a>
                                 </li>
                             {% endif %}
-                            <li class="header__nav-item header__nav-item--pull-right">
+                            <li class="header__nav-item header__nav-item--pull-right header__theme-switcher header__theme-switcher-desktop">
                                 {% include "cws2/components/theme_switcher.jinja" %}
                             </li>
                             <li class="header__nav-item header__nav-item--has-dropdown header__nav-item--orange" data-toggles="DropdownAccount">

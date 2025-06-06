@@ -121,6 +121,7 @@ class ThemeSwitcher {
 window.addEventListener("load", function() {
     window.dropdowns = [];
     window.autoSlugs = [];
+    window.themeSwitchers = [];
     // dropdown toggles
     document.querySelectorAll("[data-toggles]").forEach(function(dropdown) {
         window.dropdowns.push(new DropdownMenu(dropdown));
@@ -130,5 +131,7 @@ window.addEventListener("load", function() {
         window.autoSlugs.push(new AutoSlug(autoSlugForm));
     });
     // theme switcher
-    window.themeSwitcher = new ThemeSwitcher(document.querySelector(".theme-switcher"));
+    document.querySelectorAll(".theme-switcher").forEach(function(themeSwitcher) {
+        window.themeSwitchers.push(new ThemeSwitcher(themeSwitcher));
+    });
 });
