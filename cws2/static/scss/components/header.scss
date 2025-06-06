@@ -198,6 +198,7 @@ body > .header {
     padding-block: 2rem;
     border-top: 1px solid var(--page-border);
     padding-inline: $gutter;
+    overflow: scroll;
 
     @include desktop {
       position: absolute;
@@ -219,13 +220,17 @@ body > .header {
       max-width: $max-width;
       margin-inline: auto;
       display: grid;
-      grid-template-columns: 1fr 1fr;
+      grid-template-columns: min-content min-content min-content;
       column-gap: 1.6rem;
 
       @include desktop {
         display: flex;
         column-gap: 4.2rem;
         padding: 0rem 2.4rem;
+
+        &.header__dropdown-wrapper-right {
+          flex-direction: row-reverse;
+        }
       }
 
       .header__dropdown-section {
@@ -239,6 +244,7 @@ body > .header {
         .header__dropdown-list {
           display: flex;
           flex-flow: column nowrap;
+          white-space: nowrap;
           row-gap: .2rem;
 
           .header__dropdown-item {

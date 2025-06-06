@@ -178,9 +178,9 @@
             </div>
             {% if request.user.is_authenticated %}
                 <div class="header__dropdown header__dropdown--orange" id="DropdownAccount">
-                    <div class="header__dropdown-wrapper">
+                    <div class="header__dropdown-wrapper header__dropdown-wrapper-right">
                         <div class="header__dropdown-section">
-                            <h3 class="header__dropdown-section-title">Profile</h3>
+                            <h3 class="header__dropdown-section-title">@{{ request.user.username }}</h3>
                             <ul class="header__dropdown-list">
                                 <li class="header__dropdown-item">
                                     <a href="{{ request.user.get_absolute_url() }}" class="header__dropdown-link">
