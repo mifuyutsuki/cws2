@@ -233,12 +233,16 @@ body > .header {
         column-gap: 4.2rem;
         padding: 0rem 2.4rem;
 
-        &.header__dropdown-wrapper-right {
-          flex-direction: row-reverse;
-        }
+        // &.header__dropdown-wrapper-right {
+        //   flex-direction: row-reverse;
+        // }
       }
 
       .header__dropdown-section {
+        &:last-child {
+          padding-right: 2.4rem;
+        }
+
         .header__dropdown-section-title {
           color: var(--body-text-extra-lightest);
           font-weight: $font-bold;
