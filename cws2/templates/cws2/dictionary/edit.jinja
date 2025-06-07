@@ -1,9 +1,9 @@
 {% extends "cws2/form.jinja" %}
 {% from "cws2/macros/field.jinja" import form_field %}
-{% from "cws2/macros/button.jinja" import button %}
+{% from "cws2/macros/button.jinja" import button, submit_button %}
 
 {% block page_actions %}
-{{ button("Word", word.get_absolute_url(), icon="bx-left-arrow-alt") }}
+    {{ button("Word", word.get_absolute_url(), icon="bx-left-arrow-alt") }}
 {% endblock page_actions %}
 
 {% block form_content %}
@@ -28,3 +28,7 @@
     {{ form_field(form.source_language) }}
     {{ form_field(form.reference_image) }}
 {% endblock form_content %}
+
+{% block form_actions %}
+    {{ submit_button("Save", icon=verb_icon, name="submit") }}
+{% endblock form_actions %}

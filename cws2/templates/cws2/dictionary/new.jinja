@@ -3,7 +3,7 @@
 {% from "cws2/macros/button.jinja" import button, submit_button %}
 
 {% block page_actions %}
-{{ button("Dictionary", url('word.index', user=language.created_by.username, language=language.slug), icon="bx-left-arrow-alt") }}
+    {{ button("Dictionary", url('word.index', user=language.created_by.username, language=language.slug), icon="bx-left-arrow-alt") }}
 {% endblock page_actions %}
 
 {% block form_content %}
@@ -39,6 +39,6 @@
     {{ form_field(form.reference_image) }}
 {% endblock form_content %}
 {% block form_actions %}
-    {{ submit_button("Submit", icon=verb_icon, name="submit") }}
-    {{ submit_button("Submit and view", icon=verb_icon, name="submit_goto") }}
+    {{ submit_button("Add", icon=verb_icon, name="submit") }}
+    {{ submit_button("Add and view", icon=verb_icon, name="submit_goto") }}
 {% endblock form_actions %}

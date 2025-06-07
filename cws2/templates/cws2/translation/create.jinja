@@ -1,6 +1,10 @@
 {% extends "cws2/form.jinja" %}
-{% from "cws2/macros/button.jinja" import button %}
+{% from "cws2/macros/button.jinja" import button, submit_button %}
 
 {% block page_actions %}
-{{ button("Translations", url('translation.index'), icon="bx-left-arrow-alt") }}
+    {{ button("Translations", url('translation.index'), icon="bx-left-arrow-alt") }}
 {% endblock page_actions %}
+
+{% block form_actions %}
+    {{ submit_button("Create", icon=verb_icon, name="submit") }}
+{% endblock form_actions %}
